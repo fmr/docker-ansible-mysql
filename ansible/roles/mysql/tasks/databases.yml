@@ -1,0 +1,7 @@
+# file: mysql/tasks/databases.yml
+
+- name: MySQL | Create database
+  sudo: yes
+  sudo_user: mysql
+  command: sh -c "/usr/sbin/mysqld > /dev/null 2>&1 & sleep 5; mysql -u {{ mysql_root_user }} -e \"CREATE DATABASE IF NOT EXISTS {{ item.name }} CHARACTER SET utf8 COLLATE utf8_general_ci; \"; mysqladmin -u {{ mysql_root_user }} shutdown"
+  with_items: mysql_databases

@@ -1,0 +1,16 @@
+db:
+  build: .
+  ports:
+    - "9906:3306"
+  environment:
+    ANSIBLE_EXTRA_VARS:
+      mysql_users:
+        - name: dev_app
+          password: devapp
+      mysql_databases:
+        - name: dev_app_db
+      mysql_user_privileges:
+        - name: dev_app
+          db: dev_app_db
+          priv: ALL
+

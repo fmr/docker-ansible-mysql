@@ -1,0 +1,7 @@
+# file: mysql/tasks/users.yml
+
+- name: MySQL | Create user
+  sudo: yes
+  sudo_user: mysql
+  command: sh -c "/usr/sbin/mysqld > /dev/null 2>&1 & sleep 5; mysql -u {{ mysql_root_user }} -e \"GRANT SELECT ON *.* TO '{{ item.name }}'@'%' IDENTIFIED BY '{{ item.password }}'; \"; mysqladmin -u {{ mysql_root_user }} shutdown"
+  with_items: mysql_users

@@ -1,0 +1,9 @@
+# file: roles/mysql/tasks/install.yml
+
+- name: MySQL | Make sure the MySQL packages are installed
+  apt: pkg={{ item }}
+  with_items:
+    - mysql-server
+    - mysql-client
+    - python-mysqldb
+    - libmysqlclient-dev

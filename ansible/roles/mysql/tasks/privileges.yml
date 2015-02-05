@@ -1,0 +1,7 @@
+# file: mysql/tasks/privileges.yml
+
+- name: MySQL | Set user privileges
+  sudo: yes
+  sudo_user: mysql
+  command: sh -c "/usr/sbin/mysqld > /dev/null 2>&1 & sleep 5; mysql -u {{ mysql_root_user }} -e \"GRANT {{ item.priv }} ON {{ item.db }}.* TO '{{ item.name }}'@'%'; \"; mysqladmin -u {{ mysql_root_user }} shutdown"
+  with_items: mysql_user_privileges

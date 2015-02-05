@@ -1,0 +1,4 @@
+# file: mysql/tasks/test.yml
+- name: MySQL | mysql_users
+  shell: "echo {{ item.name }}"
+  with_items: mysql_users

@@ -1,0 +1,7 @@
+# file: mysql/tasks/main.yml
+
+- include: install.yml
+- include: configure.yml
+- include: users.yml
+- include: databases.yml
+- include: privileges.yml
