@@ -1,5 +1,7 @@
 - hosts: 127.0.0.1
   connection: local
+  vars:
+    - build_image: false
   vars_files:
     - vars.json
   roles:

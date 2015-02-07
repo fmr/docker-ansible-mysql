@@ -1,7 +1,16 @@
 # file: mysql/tasks/main.yml
 
 - include: install.yml
+  when: build_image
+
 - include: configure.yml
+  when: not build_image
+
 - include: users.yml
+  when: not build_image
+
 - include: databases.yml
+  when: not build_image
+
 - include: privileges.yml
+  when: not build_image
